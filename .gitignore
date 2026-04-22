@@ -1,0 +1,14 @@
+build/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+.qt/
+*_autogen/
+*.o
+*.d
+*.a
+*.so
+*.wav
+morserunner.ini
+contest.wav
