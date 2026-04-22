@@ -9,7 +9,7 @@ public:
     int   attackSamples{155};
     int   holdSamples{155};
     bool  agcEnabled{true};
-    float maxOut{20000.0f};   // Pascal default: FMaxOut := 20000
+    float maxOut{20000.0f};
 
     TVolumeControl();
     void reset();

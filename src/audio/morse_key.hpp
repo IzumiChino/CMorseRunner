@@ -31,5 +31,5 @@ private:
     TSingleArray blackmanHarrisStepResponse(int len) const;
 };
 
-// Global singleton (mirrors Pascal's global Keyer variable)
+// Global singleton
 TKeyer& keyer();

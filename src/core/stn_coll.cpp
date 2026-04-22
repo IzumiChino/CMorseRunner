@@ -39,7 +39,7 @@ TReImArrays StnColl::getBlock() {
         for (int i = 0; i < bs; ++i) {
             float phi = s.nextBfo();
             result.Re[i] += blk[i] * std::cos(phi);
-            result.Im[i] -= blk[i] * std::sin(phi);  // minus sin — Pascal convention
+            result.Im[i] -= blk[i] * std::sin(phi);
         }
     };
 

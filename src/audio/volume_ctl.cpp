@@ -3,7 +3,7 @@
 #include <algorithm>
 
 TVolumeControl::TVolumeControl() {
-    // Pascal defaults: FMaxOut=20000, NoiseIn/OutDb=76, Attack/Hold=28
+    // Defaults: FMaxOut=20000, NoiseIn/OutDb=76, Attack/Hold=28
     setNoiseInDb(76.0f);
     setNoiseOutDb(76.0f);
     setAttackSamples(28);

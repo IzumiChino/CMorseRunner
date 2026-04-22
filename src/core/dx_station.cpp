@@ -26,7 +26,7 @@ DxStation::DxStation() {
     // nr will be overridden by Contest::spawnStations if needed; default to 1
     nr = 1;
 
-    // Pascal: State := stCopying; TimeOut := NEVER
+    // Start silent: wait for evMeFinished (CQ) before transmitting
     // DX station waits silently until evMeFinished (CQ heard)
     state   = StationState::Listening;
     timeOut = NEVER;

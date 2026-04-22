@@ -1,0 +1,30 @@
+CMorseRunner — CW Contest Pile-up Trainer (C++/Qt6)
+====================================================
+
+This project is a C++/Qt6 rewrite derived from MorseRunner by
+Alex Shovkoplyas VE3NEA (https://www.dxatlas.com/MorseRunner/).
+The DSP algorithms, state-machine logic, and numeric constants were
+adapted from the original Delphi/Pascal source code.
+
+DUAL LICENSE
+------------
+
+1. Portions derived from MorseRunner (algorithms, constants, logic):
+
+   Mozilla Public License, Version 2.0
+   https://www.mozilla.org/en-US/MPL/2.0/
+   Copyright (C) Alex Shovkoplyas VE3NEA
+
+   The original MorseRunner source is marked "Incompatible With
+   Secondary Licenses" as defined by MPL v2.0, Exhibit B.
+
+2. New contributions in this repository (UI, build system,
+   C++ architecture, RIT feature, Qt6 integration):
+
+   GNU General Public License, Version 2 (or later)
+   https://www.gnu.org/licenses/gpl-2.0.html
+   Copyright (C) 2026 Izumi Chino <BI6DX>
+
+When in doubt, the Mozilla Public License 2.0 governs this project
+as a whole, consistent with the terms of the original work.
+

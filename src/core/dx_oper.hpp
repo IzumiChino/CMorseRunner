@@ -3,7 +3,7 @@
 #include <string>
 #include <set>
 
-// Mirrors Pascal TOperatorState
+// Operator state machine
 enum class OperState {
     NeedPrevEnd,   // osNeedPrevEnd — waiting for previous CQ/TU to end
     NeedQso,       // osNeedQso     — ready to call in response to CQ

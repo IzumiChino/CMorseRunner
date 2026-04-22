@@ -306,7 +306,6 @@ TSingleArray Contest::getAudioBlock() {
     constexpr float NOISEAMP = 6000.0f;
     TReImArrays iq;
     setLengthReIm(iq, ini.bufSize);
-    // rndUniform() is in [-1,1]; Pascal uses Random-0.5 ∈ [-0.5,0.5]
     for (int i = 0; i < ini.bufSize; ++i) {
         iq.Re[i] = 1.5f * NOISEAMP * rndUniform();
         iq.Im[i] = 1.5f * NOISEAMP * rndUniform();
@@ -334,7 +333,7 @@ TSingleArray Contest::getAudioBlock() {
         for (int i = 0; i < ini.bufSize; ++i) {
             float env = blk[i] / myStation.amplitude;  // 0..1
             if (ini.qsk) {
-                // QSK: sidetone + gated RX (Pascal: Rfg decays with key)
+                // QSK: sidetone + gated RX
                 float target = 1.0f - env;
                 if (rfg > target)
                     rfg = target;
@@ -354,7 +353,7 @@ TSingleArray Contest::getAudioBlock() {
     // ── Process IQ through filter / modulate / AGC ───────────────────────────
     TSingleArray processed = mixAndProcess(std::move(iq));
 
-    // ── Tick all stations AFTER collecting audio (Pascal order) ────────────────
+    // ── Tick all stations AFTER collecting audio ──────────────────────────────
     stnColl.tick();
     myStation.tick();
     if (myStation.state == StationState::Listening && !macroQueue_.empty())

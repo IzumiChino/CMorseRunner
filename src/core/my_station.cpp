@@ -7,7 +7,7 @@ MyStation::MyStation() {
     wpm       = ini.wpm;
     // MyStation pitch = 0: user transmits exactly at carrier (0 Hz offset)
     pitch     = 0;
-    amplitude = 300000.0f;   // matches Pascal MyStn.Amplitude
+    amplitude = 300000.0f;
     setPitch(pitch);
 }
 
