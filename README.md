@@ -1,8 +1,8 @@
 # CMorseRunner
 
-A C++/Qt6 rewrite of MorseRunner, a CW contest pile-up trainer by Alex Shovkoplyas VE3NEA.
+A C++/Qt6 port of MorseRunner, a CW contest pile-up trainer by Alex Shovkoplyas VE3NEA.
 
-The original was written in Delphi/Pascal for Windows only. This project adapts the DSP pipeline, station state machines, and contest logic into modern C++, targeting Linux (and any platform supported by Qt6 + PortAudio), with a redesigned Qt6 UI and added features.
+The original MorseRunner was written in Delphi/Pascal for Windows. This repository ports the application to modern C++ with Qt6 and PortAudio, keeps the original contest model and signal-processing behavior, and adds a new desktop UI plus an RIT control.
 
 ## Features
 
@@ -66,12 +66,15 @@ src/
 CMakeLists.txt
 ```
 
-## License
+## Licensing
 
-This project is dual-licensed. See [LICENSE](LICENSE) for full details.
+This repository does not use one license for every file.
 
-- DSP algorithms, state-machine logic, and numeric constants are derived from MorseRunner by Alex Shovkoplyas VE3NEA and remain under the **Mozilla Public License 2.0** (Incompatible With Secondary Licenses).
-- New contributions (Qt6 UI, C++ architecture, RIT feature, build system) are Copyright (C) 2026 Izumi Chino \<BI6DX\> and additionally available under **GPL-2.0**.
+- Files under `src/audio/**` and `src/core/**` are under **MPL-2.0**. These files contain adapted logic from the original MorseRunner source.
+- `.gitignore`, `CMakeLists.txt`, `README.md`, `src/main.cpp`, and files under `src/ui/**` are under **GPL-2.0-only** and were written for this port.
+- The repository as a whole should not be described as `GPL-2.0-only`.
+
+See [LICENSE](LICENSE), [LICENSES/MPL-2.0.txt](LICENSES/MPL-2.0.txt), and [LICENSES/GPL-2.0-only.txt](LICENSES/GPL-2.0-only.txt) for the exact file map and full license texts.
 
 ## Acknowledgements
 

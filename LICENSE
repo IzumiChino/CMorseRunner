@@ -1,30 +1,74 @@
-CMorseRunner — CW Contest Pile-up Trainer (C++/Qt6)
-====================================================
+CMorseRunner Licensing Notice
+=============================
 
-This project is a C++/Qt6 rewrite derived from MorseRunner by
-Alex Shovkoplyas VE3NEA (https://www.dxatlas.com/MorseRunner/).
-The DSP algorithms, state-machine logic, and numeric constants were
-adapted from the original Delphi/Pascal source code.
+This repository contains files under more than one license.
 
-DUAL LICENSE
-------------
+Background
+----------
 
-1. Portions derived from MorseRunner (algorithms, constants, logic):
+CMorseRunner is a C++/Qt6 port of MorseRunner by Alex Shovkoplyas VE3NEA:
+https://www.dxatlas.com/MorseRunner/
 
-   Mozilla Public License, Version 2.0
-   https://www.mozilla.org/en-US/MPL/2.0/
-   Copyright (C) Alex Shovkoplyas VE3NEA
+Parts of this repository adapt non-trivial logic, algorithms, constants,
+and state-machine behavior from the original Delphi/Pascal implementation.
+Those original source files were distributed under the Mozilla Public
+License 2.0 with the "Incompatible With Secondary Licenses" notice.
 
-   The original MorseRunner source is marked "Incompatible With
-   Secondary Licenses" as defined by MPL v2.0, Exhibit B.
+Because of that, the adapted files in this repository are not offered as
+GPL-2.0-only.
 
-2. New contributions in this repository (UI, build system,
-   C++ architecture, RIT feature, Qt6 integration):
+License Allocation
+------------------
 
-   GNU General Public License, Version 2 (or later)
-   https://www.gnu.org/licenses/gpl-2.0.html
-   Copyright (C) 2026 Izumi Chino <BI6DX>
+The following files and directories are distributed under MPL-2.0:
 
-When in doubt, the Mozilla Public License 2.0 governs this project
-as a whole, consistent with the terms of the original work.
+- src/audio/**
+- src/core/**
+
+These files contain adapted logic from the original MorseRunner source.
+
+The following files are distributed under GPL-2.0-only:
+
+- .gitignore
+- CMakeLists.txt
+- README.md
+- src/main.cpp
+- src/ui/**
+
+These files were written for this port and are offered under GPL-2.0-only
+by Izumi Chino <BI6DX>.
+
+Combined Distribution
+---------------------
+
+The repository as a whole is a collection of MPL-2.0 files and
+GPL-2.0-only files. It should not be described as being available under
+GPL-2.0-only as a single work.
+
+No statement in this repository should be read as relicensing any
+MPL-2.0-covered file under GPL-2.0-only.
+
+If you modify or redistribute files under src/audio or src/core, comply
+with MPL-2.0 for those files.
+
+If you modify or redistribute the GPL-2.0-only files listed above,
+comply with GPL-2.0-only for those files.
+
+When redistributing this repository, preserve this notice and both full
+license texts.
+
+License Texts
+-------------
+
+- MPL-2.0: LICENSES/MPL-2.0.txt
+- GPL-2.0-only: LICENSES/GPL-2.0-only.txt
+
+Copyright
+---------
+
+Original MorseRunner:
+Copyright (C) Alex Shovkoplyas VE3NEA
+
+GPL-2.0-only files added for this port:
+Copyright (C) 2026 Izumi Chino <BI6DX>
 
