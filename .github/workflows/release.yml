@@ -1,0 +1,64 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+*'
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            cmake ninja-build \
+            qt6-base-dev qt6-multimedia-dev \
+            portaudio19-dev
+
+      - name: Configure
+        run: cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build
+        run: cmake --build build -j$(nproc)
+
+      - name: Package
+        id: package
+        run: |
+          VERSION="${GITHUB_REF_NAME}"
+          PKGDIR="CMorseRunner-${VERSION}-linux-x86_64"
+          mkdir -p "dist/${PKGDIR}"
+          cp build/MorseRunner "dist/${PKGDIR}/"
+          cp LICENSE README.md "dist/${PKGDIR}/"
+          cp -r LICENSES "dist/${PKGDIR}/"
+          cd dist
+          tar czf "${PKGDIR}.tar.gz" "${PKGDIR}"
+          echo "asset=${PKGDIR}.tar.gz" >> "$GITHUB_OUTPUT"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: CMorseRunner ${{ github.ref_name }}
+          files: dist/${{ steps.package.outputs.asset }}
+          generate_release_notes: true
+          fail_on_unmatched_files: true
+          body: |
+            ## Dependencies
+
+            The binary is dynamically linked. Install before running:
+
+            **Debian/Ubuntu:**
+            ```
+            sudo apt install qt6-base-dev qt6-multimedia-dev portaudio19-dev
+            ```
+            **Arch:**
+            ```
+            sudo pacman -S qt6-base qt6-multimedia portaudio
+            ```

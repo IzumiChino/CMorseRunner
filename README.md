@@ -1,5 +1,7 @@
 # CMorseRunner
 
+[![CI](https://github.com/IzumiChino/CMorseRunner/actions/workflows/ci.yml/badge.svg)](https://github.com/IzumiChino/CMorseRunner/actions/workflows/ci.yml)
+
 A C++/Qt6 port of MorseRunner, a CW contest pile-up trainer by Alex Shovkoplyas VE3NEA.
 
 The original MorseRunner was written in Delphi/Pascal for Windows. This repository ports the application to modern C++ with Qt6 and PortAudio, keeps the original contest model and signal-processing behavior, and adds a new desktop UI plus an RIT control.
@@ -55,6 +57,22 @@ cmake --build build -j$(nproc)
 4. Use the RIT spinbox to shift the receive frequency without moving the transmit pitch.
 5. Press **Esc** to clear the entry or abort a partial QSO.
 6. Click **Stop** to end the session and view the score.
+
+## Releases
+
+Pre-built binaries for Linux x86_64 are attached to each [GitHub Release](https://github.com/IzumiChino/CMorseRunner/releases).
+
+To publish a new release:
+
+```bash
+# Bump version, commit, and create tag locally:
+bash scripts/bump-version.sh patch   # or minor / major
+
+# Push — this triggers the release workflow:
+git push origin main v<NEW_VERSION>
+```
+
+The release workflow (`release.yml`) builds in Release mode, packages the binary with LICENSE and README into a `.tar.gz`, and creates a GitHub Release automatically.
 
 ## Project structure
 
