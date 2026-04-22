@@ -1,33 +1,40 @@
 CMorseRunner Licensing Notice
 =============================
 
-This repository contains files under more than one license.
-
-Background
-----------
-
 CMorseRunner is a C++/Qt6 port of MorseRunner by Alex Shovkoplyas VE3NEA:
 https://www.dxatlas.com/MorseRunner/
 
-Parts of this repository adapt non-trivial logic, algorithms, constants,
-and state-machine behavior from the original Delphi/Pascal implementation.
-Those original source files were distributed under the Mozilla Public
-License 2.0 with the "Incompatible With Secondary Licenses" notice.
+This repository contains source files that adapt logic, algorithms,
+constants, and state-machine behavior from the original Delphi/Pascal
+implementation, together with new files written for this port.
 
-Because of that, the adapted files in this repository are not offered as
-GPL-2.0-only.
+Upstream MPL Status
+-------------------
+
+The original MorseRunner Delphi/Pascal files used for this port carry the
+standard MPL-2.0 notice and do not include the Exhibit B notice
+("Incompatible With Secondary Licenses"). Under MPL-2.0 section 1.5,
+that means the upstream Covered Software is not marked incompatible with
+Secondary Licenses.
+
+MPL-2.0 section 1.12 defines GNU GPL version 2.0 as a Secondary License.
+MPL-2.0 section 3.3 therefore permits distribution of the adapted Covered
+Software under GPL-2.0 as part of this larger combined work, while the
+same files remain available under MPL-2.0.
 
 License Allocation
 ------------------
 
-The following files and directories are distributed under MPL-2.0:
+The following files and directories contain Covered Software adapted from
+the original MorseRunner source and are available under MPL-2.0 and,
+when distributed as part of this larger work, additionally under
+GPL-2.0 pursuant to MPL-2.0 section 3.3:
 
 - src/audio/**
 - src/core/**
 
-These files contain adapted logic from the original MorseRunner source.
-
-The following files are distributed under GPL-2.0-only:
+The following files were written for this port and are distributed under
+GPL-2.0-only:
 
 - .gitignore
 - CMakeLists.txt
@@ -35,24 +42,17 @@ The following files are distributed under GPL-2.0-only:
 - src/main.cpp
 - src/ui/**
 
-These files were written for this port and are offered under GPL-2.0-only
-by Izumi Chino <BI6DX>.
+Practical Effect
+----------------
 
-Combined Distribution
----------------------
+This repository may be distributed under GPL-2.0.
 
-The repository as a whole is a collection of MPL-2.0 files and
-GPL-2.0-only files. It should not be described as being available under
-GPL-2.0-only as a single work.
+For files under src/audio/** and src/core/**, recipients may use,
+modify, and redistribute them under either MPL-2.0 or GPL-2.0, subject
+to the conditions of the chosen license.
 
-No statement in this repository should be read as relicensing any
-MPL-2.0-covered file under GPL-2.0-only.
-
-If you modify or redistribute files under src/audio or src/core, comply
-with MPL-2.0 for those files.
-
-If you modify or redistribute the GPL-2.0-only files listed above,
-comply with GPL-2.0-only for those files.
+For the GPL-2.0-only files listed above, recipients must comply with
+GPL-2.0.
 
 When redistributing this repository, preserve this notice and both full
 license texts.
@@ -69,6 +69,6 @@ Copyright
 Original MorseRunner:
 Copyright (C) Alex Shovkoplyas VE3NEA
 
-GPL-2.0-only files added for this port:
+Files written for this port:
 Copyright (C) 2026 Izumi Chino <BI6DX>
 

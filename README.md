@@ -68,11 +68,11 @@ CMakeLists.txt
 
 ## Licensing
 
-This repository does not use one license for every file.
+This repository is distributed under **GPL-2.0**.
 
-- Files under `src/audio/**` and `src/core/**` are under **MPL-2.0**. These files contain adapted logic from the original MorseRunner source.
-- `.gitignore`, `CMakeLists.txt`, `README.md`, `src/main.cpp`, and files under `src/ui/**` are under **GPL-2.0-only** and were written for this port.
-- The repository as a whole should not be described as `GPL-2.0-only`.
+- Files under `src/audio/**` and `src/core/**` adapt logic from the original MorseRunner source. They remain available under **MPL-2.0** and are additionally distributed under **GPL-2.0** pursuant to MPL-2.0 section 3.3.
+- `.gitignore`, `CMakeLists.txt`, `README.md`, `src/main.cpp`, and files under `src/ui/**` were written for this port and are distributed under **GPL-2.0-only**.
+- The original Delphi/Pascal files used for this port carry the standard MPL-2.0 header and do not include the Exhibit B "Incompatible With Secondary Licenses" notice.
 
 See [LICENSE](LICENSE), [LICENSES/MPL-2.0.txt](LICENSES/MPL-2.0.txt), and [LICENSES/GPL-2.0-only.txt](LICENSES/GPL-2.0-only.txt) for the exact file map and full license texts.
 
