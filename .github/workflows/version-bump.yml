@@ -29,14 +29,17 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      - name: Skip if current commit is already version-tagged
+      - name: Check if current commit is already version-tagged
+        id: tag_check
         run: |
           if git tag --points-at HEAD | grep -Eq '^v[0-9]+\.[0-9]+\.[0-9]+$'; then
-            echo "Current commit already has a semantic version tag; skipping bump."
-            exit 0
+            echo "should_bump=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "should_bump=true" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Bump patch version and tag
+        if: steps.tag_check.outputs.should_bump == 'true'
         run: |
           bash scripts/bump-version.sh patch
           git push origin HEAD:${{ github.ref_name }} --follow-tags
