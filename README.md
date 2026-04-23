@@ -69,7 +69,8 @@ To publish a new release:
 # CI will automatically:
 # 1) bump patch version in CMakeLists.txt
 # 2) create and push tag v<NEW_VERSION>
-# 3) trigger release workflow and upload package assets
+# 3) run Release workflow after Version Bump succeeds
+# 4) upload package assets to GitHub Release
 ```
 
 If you need manual major/minor bumping locally:
@@ -79,7 +80,7 @@ bash scripts/bump-version.sh patch   # or minor / major
 git push origin main --follow-tags
 ```
 
-The release workflow (`release.yml`) builds in Release mode, packages the binary with LICENSE and README into a `.tar.gz`, and creates a GitHub Release automatically when a semantic-version tag like `v1.2.3` is pushed.
+The release workflow (`release.yml`) runs automatically after `Version Bump` succeeds on `main`, resolves the semantic-version tag on that commit, builds in Release mode, packages the binary with LICENSE and README into a `.tar.gz`, and publishes/updates the corresponding GitHub Release.
 
 ## Project structure
 

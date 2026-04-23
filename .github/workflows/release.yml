@@ -1,9 +1,9 @@
 name: Release
 
 on:
-  push:
-    tags:
-      - 'v[0-9]*.[0-9]*.[0-9]*'
+  workflow_run:
+    workflows: ['Version Bump']
+    types: [completed]
   workflow_dispatch:
 
 permissions:
@@ -11,15 +11,35 @@ permissions:
 
 jobs:
   build-and-release:
+    if: >-
+      (github.event_name == 'workflow_run' &&
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.head_branch == 'main') ||
+      github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-24.04
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+          ref: refs/heads/main
+
+      - name: Resolve release metadata
+        id: meta
+        run: |
+          TAG="$(git tag --points-at HEAD | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -n1 || true)"
+          if [ -z "$TAG" ]; then
+            echo "No semantic-version tag found on commit $(git rev-parse --short HEAD)." >&2
+            exit 1
+          fi
+          echo "tag=${TAG}" >> "$GITHUB_OUTPUT"
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
       - name: Validate semantic version tag
         run: |
-          if [[ ! "${GITHUB_REF_NAME}" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-            echo "Tag '${GITHUB_REF_NAME}' is not in semantic-version format (vMAJOR.MINOR.PATCH)." >&2
+          if [[ ! "${{ steps.meta.outputs.tag }}" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "Tag '${{ steps.meta.outputs.tag }}' is not in semantic-version format (vMAJOR.MINOR.PATCH)." >&2
             exit 1
           fi
 
@@ -40,7 +60,7 @@ jobs:
       - name: Package
         id: package
         run: |
-          VERSION="${GITHUB_REF_NAME}"
+          VERSION="${{ steps.meta.outputs.tag }}"
           PKGDIR="CMorseRunner-${VERSION}-linux-x86_64"
           mkdir -p "dist/${PKGDIR}"
           cp build/MorseRunner "dist/${PKGDIR}/"
@@ -53,7 +73,9 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          name: CMorseRunner ${{ github.ref_name }}
+          tag_name: ${{ steps.meta.outputs.tag }}
+          target_commitish: ${{ steps.meta.outputs.sha }}
+          name: CMorseRunner ${{ steps.meta.outputs.tag }}
           files: dist/${{ steps.package.outputs.asset }}
           generate_release_notes: true
           fail_on_unmatched_files: true
