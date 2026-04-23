@@ -34,7 +34,7 @@ echo "Version bumped: ${CURRENT} -> ${NEW}"
 
 git add "$CMAKELISTS"
 git commit -m "chore: bump version to ${NEW}"
-git tag "v${NEW}"
+git tag -a "v${NEW}" -m "Release v${NEW}"
 
 echo ""
 echo "Tag v${NEW} created locally. To publish the release:"
