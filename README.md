@@ -65,14 +65,21 @@ Pre-built binaries for Linux x86_64 are attached to each [GitHub Release](https:
 To publish a new release:
 
 ```bash
-# Bump version, commit, and create tag locally:
-bash scripts/bump-version.sh patch   # or minor / major
-
-# Push — this triggers the release workflow:
-git push origin main v<NEW_VERSION>
+# Push code to main.
+# CI will automatically:
+# 1) bump patch version in CMakeLists.txt
+# 2) create and push tag v<NEW_VERSION>
+# 3) trigger release workflow and upload package assets
 ```
 
-The release workflow (`release.yml`) builds in Release mode, packages the binary with LICENSE and README into a `.tar.gz`, and creates a GitHub Release automatically.
+If you need manual major/minor bumping locally:
+
+```bash
+bash scripts/bump-version.sh patch   # or minor / major
+git push origin main --follow-tags
+```
+
+The release workflow (`release.yml`) builds in Release mode, packages the binary with LICENSE and README into a `.tar.gz`, and creates a GitHub Release automatically when a `v*.*.*` tag is pushed.
 
 ## Project structure
 
