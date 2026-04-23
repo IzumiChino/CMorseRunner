@@ -13,7 +13,9 @@ permissions:
 
 jobs:
   bump-version:
-    if: github.actor != 'github-actions[bot]'
+    if: >-
+      github.actor != 'github-actions[bot]' &&
+      !startsWith(github.event.head_commit.message, 'chore: bump version to ')
     runs-on: ubuntu-24.04
 
     steps:
