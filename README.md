@@ -79,7 +79,7 @@ bash scripts/bump-version.sh patch   # or minor / major
 git push origin main --follow-tags
 ```
 
-The release workflow (`release.yml`) builds in Release mode, packages the binary with LICENSE and README into a `.tar.gz`, and creates a GitHub Release automatically when a `v*.*.*` tag is pushed.
+The release workflow (`release.yml`) builds in Release mode, packages the binary with LICENSE and README into a `.tar.gz`, and creates a GitHub Release automatically when a semantic-version tag like `v1.2.3` is pushed.
 
 ## Project structure
 
