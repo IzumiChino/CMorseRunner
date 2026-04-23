@@ -1003,7 +1003,7 @@ void MainWindow::onAbout()
 		tr("<b>CMorseRunner</b><br>"
 		   "A CW contest trainer.<br><br>"
 		   "Based on the original MorseRunner by VE3NEA.<br>"
-		   "Refractored with C++ and Qt6 by Izumi Chino@BI6DX Team<br>"
+		   "Refactored with C++ and Qt6 by Izumi Chino@BI6DX Team<br>"
 		   "This repository may be distributed under GPL-2.0 and "
 		   "MPL-2.0"));
 }
