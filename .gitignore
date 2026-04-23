@@ -1,6 +1,8 @@
 build/
 dist/
 VCL/
+CMorseRunner-cppcheck-build-dir/
+CMorseRunner.cppcheck
 *.pas
 Main.dfm
 MorseRunner.dpr
